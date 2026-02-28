@@ -733,6 +733,208 @@
       transform: translateY(-1px);
     }
 
+
+    /* ─── BLOG ─── */
+    #blog {
+      max-width: 1200px;
+      padding: 6rem 2.5rem;
+      margin: 0 auto;
+    }
+
+    .blog-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .blog-card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: border-color 0.25s, transform 0.25s;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .blog-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-4px);
+    }
+
+    .blog-card:hover .blog-thumb-overlay { opacity: 1; }
+
+    /* Featured card spans 2 cols */
+    .blog-card.featured {
+      grid-column: span 2;
+      flex-direction: row;
+    }
+
+    .blog-thumb {
+      position: relative;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .blog-card:not(.featured) .blog-thumb {
+      height: 180px;
+    }
+
+    .blog-card.featured .blog-thumb {
+      width: 42%;
+      min-height: 280px;
+    }
+
+    .blog-thumb-bg {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.2rem;
+    }
+
+    .bt-1 { background: linear-gradient(135deg, #071828 0%, #003340 100%); }
+    .bt-2 { background: linear-gradient(135deg, #180a10 0%, #3d0a1e 100%); }
+    .bt-3 { background: linear-gradient(135deg, #0a1418 0%, #0a2d28 100%); }
+    .bt-4 { background: linear-gradient(135deg, #0f0f20 0%, #1a0d3d 100%); }
+    .bt-5 { background: linear-gradient(135deg, #181208 0%, #3d2800 100%); }
+
+    .blog-thumb-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,229,255,0.06);
+      border-bottom: 2px solid var(--accent);
+      opacity: 0;
+      transition: opacity 0.25s;
+    }
+
+    .blog-thumb-tag {
+      position: absolute;
+      top: 0.75rem;
+      left: 0.75rem;
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.6rem;
+      border-radius: 2px;
+      border: 1px solid;
+    }
+
+    .tag-critical { color: #ff3e6c; border-color: rgba(255,62,108,0.35); background: rgba(255,62,108,0.08); }
+    .tag-cloud    { color: #00e5ff; border-color: rgba(0,229,255,0.35);  background: rgba(0,229,255,0.07); }
+    .tag-devops   { color: #00ffaa; border-color: rgba(0,255,170,0.35);  background: rgba(0,255,170,0.07); }
+    .tag-zerotrust{ color: #bf7fff; border-color: rgba(191,127,255,0.35);background: rgba(191,127,255,0.07);}
+    .tag-ai       { color: #ff9900; border-color: rgba(255,153,0,0.35);  background: rgba(255,153,0,0.07); }
+
+    .blog-body {
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .blog-meta {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 0.85rem;
+    }
+
+    .blog-date {
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+
+    .blog-read {
+      font-size: 0.65rem;
+      color: var(--muted);
+    }
+
+    .blog-title {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.3;
+      margin-bottom: 0.75rem;
+    }
+
+    .blog-card.featured .blog-title {
+      font-size: 1.3rem;
+    }
+
+    .blog-excerpt {
+      font-size: 0.78rem;
+      color: var(--muted);
+      line-height: 1.75;
+      flex: 1;
+    }
+
+    .blog-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 1.25rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .blog-author {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.7rem;
+      color: var(--muted);
+    }
+
+    .blog-avatar {
+      width: 22px; height: 22px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.55rem;
+      font-weight: 700;
+      color: var(--bg);
+      flex-shrink: 0;
+    }
+
+    .blog-arrow {
+      font-size: 0.7rem;
+      color: var(--accent);
+      opacity: 0;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+
+    .blog-card:hover .blog-arrow {
+      opacity: 1;
+      transform: translateX(4px);
+    }
+
+    .blog-view-all {
+      margin-top: 2.5rem;
+      display: flex;
+      justify-content: center;
+    }
+
+    @media (max-width: 900px) {
+      .blog-grid { grid-template-columns: 1fr 1fr; }
+      .blog-card.featured { grid-column: span 2; flex-direction: column; }
+      .blog-card.featured .blog-thumb { width: 100%; min-height: 200px; }
+    }
+
+    @media (max-width: 600px) {
+      .blog-grid { grid-template-columns: 1fr; }
+      .blog-card.featured { grid-column: span 1; }
+      #blog { padding: 4rem 1.25rem; }
+    }
+
     /* ─── FOOTER ─── */
     footer {
       border-top: 1px solid var(--border);
@@ -840,6 +1042,7 @@
   <ul class="nav-links" id="navLinks">
     <li><a href="#about">About</a></li>
     <li><a href="#gallery">Work</a></li>
+    <li><a href="#blog">Blog</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
   <button class="hamburger" id="hamburger" aria-label="Toggle menu">
@@ -1380,9 +1583,147 @@
 
 <div class="divider"></div>
 
+<!-- BLOG -->
+<section id="blog">
+  <div class="section-label">// 03 — Blog</div>
+  <h2 class="section-title">Field Notes</h2>
+
+  <div class="blog-grid">
+
+    <!-- Featured post -->
+    <a class="blog-card featured" href="#">
+      <div class="blog-thumb bt-1">
+        <div class="blog-thumb-bg">🔐</div>
+        <span class="blog-thumb-tag tag-critical">Critical</span>
+        <div class="blog-thumb-overlay"></div>
+      </div>
+      <div class="blog-body">
+        <div class="blog-meta">
+          <span class="blog-date">Feb 14, 2026</span>
+          <span class="blog-read">· 12 min read</span>
+        </div>
+        <h3 class="blog-title">Why Zero-Trust Is Not a Product You Buy — It's an Architecture You Build</h3>
+        <p class="blog-excerpt">
+          Every vendor is selling "zero-trust" right now. Most of them are lying. Zero-trust is a philosophy of explicit verification, least-privilege access, and assume-breach posture — not a checkbox SKU. Here's what an actual zero-trust migration looks like from the inside: the hard decisions, the politics, the wins, and the traps most teams fall into six months in.
+        </p>
+        <div class="blog-footer">
+          <div class="blog-author">
+            <div class="blog-avatar">ST</div>
+            <span>Sal Tucker</span>
+          </div>
+          <span class="blog-arrow">Read more →</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Post 2 -->
+    <a class="blog-card" href="#">
+      <div class="blog-thumb bt-2">
+        <div class="blog-thumb-bg">☁️</div>
+        <span class="blog-thumb-tag tag-cloud">Cloud</span>
+        <div class="blog-thumb-overlay"></div>
+      </div>
+      <div class="blog-body">
+        <div class="blog-meta">
+          <span class="blog-date">Jan 28, 2026</span>
+          <span class="blog-read">· 8 min read</span>
+        </div>
+        <h3 class="blog-title">AWS IAM Misconfigurations That Keep Me Up at Night</h3>
+        <p class="blog-excerpt">A deep dive into the top IAM mistakes I find on nearly every cloud engagement — and the policies that fix them before attackers find them first.</p>
+        <div class="blog-footer">
+          <div class="blog-author">
+            <div class="blog-avatar">ST</div>
+            <span>Sal Tucker</span>
+          </div>
+          <span class="blog-arrow">Read more →</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Post 3 -->
+    <a class="blog-card" href="#">
+      <div class="blog-thumb bt-3">
+        <div class="blog-thumb-bg">⚙️</div>
+        <span class="blog-thumb-tag tag-devops">DevSecOps</span>
+        <div class="blog-thumb-overlay"></div>
+      </div>
+      <div class="blog-body">
+        <div class="blog-meta">
+          <span class="blog-date">Jan 09, 2026</span>
+          <span class="blog-read">· 6 min read</span>
+        </div>
+        <h3 class="blog-title">Shifting Left Without Breaking Your Engineers</h3>
+        <p class="blog-excerpt">Security in the CI/CD pipeline only works if developers don't hate it. How to integrate SAST, secrets scanning, and SBOMs without killing velocity.</p>
+        <div class="blog-footer">
+          <div class="blog-author">
+            <div class="blog-avatar">ST</div>
+            <span>Sal Tucker</span>
+          </div>
+          <span class="blog-arrow">Read more →</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Post 4 -->
+    <a class="blog-card" href="#">
+      <div class="blog-thumb bt-4">
+        <div class="blog-thumb-bg">🛡</div>
+        <span class="blog-thumb-tag tag-zerotrust">Zero Trust</span>
+        <div class="blog-thumb-overlay"></div>
+      </div>
+      <div class="blog-body">
+        <div class="blog-meta">
+          <span class="blog-date">Dec 19, 2025</span>
+          <span class="blog-read">· 9 min read</span>
+        </div>
+        <h3 class="blog-title">Threat Modeling in Practice: STRIDE vs PASTA vs LINDDUN</h3>
+        <p class="blog-excerpt">A practitioner's comparison of the three frameworks I use most — when to reach for each one, and how to run a threat model workshop that engineers actually find useful.</p>
+        <div class="blog-footer">
+          <div class="blog-author">
+            <div class="blog-avatar">ST</div>
+            <span>Sal Tucker</span>
+          </div>
+          <span class="blog-arrow">Read more →</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Post 5 -->
+    <a class="blog-card" href="#">
+      <div class="blog-thumb bt-5">
+        <div class="blog-thumb-bg">🤖</div>
+        <span class="blog-thumb-tag tag-ai">AI Security</span>
+        <div class="blog-thumb-overlay"></div>
+      </div>
+      <div class="blog-body">
+        <div class="blog-meta">
+          <span class="blog-date">Nov 30, 2025</span>
+          <span class="blog-read">· 11 min read</span>
+        </div>
+        <h3 class="blog-title">Securing LLM Pipelines: Prompt Injection, Data Exfil, and the OWASP Top 10 for AI</h3>
+        <p class="blog-excerpt">AI systems introduce an entirely new attack surface. Here's how I approach security architecture reviews for teams building on top of language models.</p>
+        <div class="blog-footer">
+          <div class="blog-author">
+            <div class="blog-avatar">ST</div>
+            <span>Sal Tucker</span>
+          </div>
+          <span class="blog-arrow">Read more →</span>
+        </div>
+      </div>
+    </a>
+
+  </div>
+
+  <div class="blog-view-all">
+    <a href="#" class="btn btn-outline">View All Posts →</a>
+  </div>
+</section>
+
+<div class="divider"></div>
+
 <!-- CONTACT -->
 <section id="contact">
-  <div class="section-label">// 03 — Contact</div>
+  <div class="section-label">// 04 — Contact</div>
   <h2 class="section-title">Work Together</h2>
   <div class="contact-wrapper">
     <div class="contact-info">
